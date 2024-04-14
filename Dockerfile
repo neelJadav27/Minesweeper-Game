@@ -1,9 +1,11 @@
-FROM node:alpine
+FROM nginx:alpine
 
-WORKDIR /usr/src/app
+COPY Minesweeper/index.html .
+COPY Minesweeper/css/ css/
+COPY Minesweeper/images/ images/
+COPY Minesweeper/js/ js/
 
-COPY . .
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD ["npm", "start"]
+CMD ["nginx","-g", "daemon off;"]
